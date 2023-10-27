@@ -49,26 +49,6 @@ export class RenderStation {
         itemCar.textContent = car.getTitle();
         itemCar.classList.add(`${car.carType}`);
 
-        const progress = document.createElement('span');
-        let progressInfo;
-
-        const timerId = setInterval(() => {
-          car.nowTank += column.speed;
-          progressInfo = `${car.nowTank} / ${car.maxTank}`;
-          console.log('progressInfo: ', progressInfo);
-          progress.textContent = ` (${progressInfo})`;
-
-          if (car.nowTank >= car.maxTank) {
-            car.fillUp();
-            clearInterval(timerId);
-            column.car = null;
-          }
-        }, 1000);
-
-        progressInfo = `${car.nowTank} / ${car.maxTank}`;
-        progress.textContent = ` (${progressInfo})`;
-
-        itemCar.append(progress);
         itemColumn.append(itemCar);
       }
 
